@@ -1,0 +1,298 @@
+<!--{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="uk-container uk-margin-large-top" style="max-width:900px;">
+
+  <h2 class="uk-heading-line uk-text-center">
+    <span>Rent Product Details</span>
+  </h2>
+
+   Product Details Card
+  <div class="uk-card uk-card-default uk-card-body uk-margin-top uk-grid-small uk-child-width-1-2@m" uk-grid>
+
+     Product Image
+    <div>
+      <img src="{% static item.img %}"
+           class="uk-border-rounded"
+           style="width:100%; height:300px; object-fit:cover;">
+    </div>
+
+    <! Product Info --
+    <div>
+      <h3>{{ item.name }}</h3>
+
+      <p><b>Rent Price:</b> ₹{{ item.rent }} / day</p>
+
+      <p><b>Description:</b>
+        This product is available for rent in best condition.
+      </p>
+
+      <hr>
+
+      <! Rent Form --
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="uk-margin">
+          <label class="uk-form-label">Start Date</label>
+          <input class="uk-input" type="date" name="start_date" required>
+        </div>
+
+        <div class="uk-margin">
+          <label class="uk-form-label">Number of Days</label>
+          <input class="uk-input" type="number" name="days"
+                 placeholder="Enter rent days" required>
+        </div>
+
+        <button class="uk-button uk-button-primary uk-width-1-1">
+          Calculate Rent Details
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <! Rent Summary --
+  {% if total_price %}
+  <div class="uk-card uk-card-primary uk-card-body uk-margin-top">
+    <h3>Rent Summary</h3>
+
+    <p><b>Start Date:</b> {{ start_date }}</p>
+    <p><b>End Date:</b> {{ end_date }}</p>
+
+    <p><b>Total Rent Price:</b> ₹{{ total_price }}</p>
+
+    <button class="uk-button uk-button-secondary uk-width-1-1">
+      Confirm Rent Now ✅
+    </button>
+  </div>
+  {% endif %}
+
+  <! Reviews Section --
+  <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+    <h3>Product Reviews ⭐</h3>
+
+    <ul class="uk-list uk-list-divider">
+      <li><b>User1:</b> Very good product, smooth experience.</li>
+      <li><b>User2:</b> Rent was affordable and product quality was excellent.</li>
+      <li><b>User3:</b> Highly recommended for renting!</li>
+    </ul>
+
+
+  </div>
+
+</div>
+
+{% endblock %}-->
+
+
+clothes..
+<!-- Item 2 -->
+     <!--- <div>
+        <div class="product-card uk-text-center">
+          <img src="{% static 'assets/img/clothe/dress.jpeg' %}">
+          <h4>Women Dress</h4>
+          <p>Rent: ₹1000/day</p>
+          <p>Buy: ₹5800</p>
+          <ul>
+            <li>Color: Red</li>
+            <li>Size: M</li>
+          </ul>
+          <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+        </div>
+      </div>
+
+      <!- Item 3 -
+      <div>
+        <div class="product-card uk-text-center">
+          <img src="{% static 'assets/img/clothe/hoodie1.jpeg' %}">
+          <h4>Kids Hoodie</h4>
+          <p>Rent: ₹400/day</p>
+          <p>Buy: ₹1000</p>
+          <ul>
+            <li>Color: Blue</li>
+            <li>Age: 8-10</li>
+          </ul>
+          <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+        </div>
+      </div>
+
+      <!- Item 4 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/couple.jpeg' %}">
+        <h4>Couple Outfit Set</h4>
+        <p>Rent: ₹2500/day</p>
+        <p>Buy: ₹5000</p>
+        <ul><li>Color: White</li><li>Size: M/L</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 5 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/men suit.jpeg' %}">
+        <h4>Men Formal Suit</h4>
+        <p>Rent: ₹1000/day</p>
+        <p>Buy: ₹5000</p>
+        <ul><li>Color: Navy</li><li>Size: XL</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 6 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/saree.jpeg' %}">
+        <h4>Women Saree</h4>
+        <p>Rent: ₹850/day</p>
+        <p>Buy: ₹3000</p>
+        <ul><li>Color: Green</li><li>Material: Silk</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 7 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/t-shirt.jpeg' %}">
+        <h4>Men T-Shirt</h4>
+        <p>Rent: ₹380/day</p>
+        <p>Buy: ₹600</p>
+        <ul><li>Color: Grey</li><li>Size: M</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 8 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/kurti.jpeg' %}">
+        <h4>Women Kurti</h4>
+        <p>Rent: ₹900/day</p>
+        <p>Buy: ₹2050</p>
+        <ul><li>Color: Yellow</li><li>Size: S</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 9 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/kids party.jpeg' %}">
+        <h4>Kids Party Dress</h4>
+        <p>Rent: ₹550/day</p>
+        <p>Buy: ₹1100</p>
+        <ul><li>Color: Pink</li><li>Age: 5-7</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 10 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/brown.jpeg' %}">
+        <h4>Westen Dress</h4>
+        <p>Rent: ₹1800/day</p>
+        <p>Buy: ₹3000</p>
+        <ul><li>Color: Brown</li><li>Age:3-4</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 11 -
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/boy.jpeg' %}">
+        <h4>Kids</h4>
+        <p>Rent: ₹980/day</p>
+        <p>Buy: ₹2400</p>
+        <ul><li>Color:Brown </li><li>Size: S</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+       Item 12
+      <div><div class="product-card uk-text-center">
+        <img src="{% static 'assets/img/clothe/maroon.jpeg' %}">
+        <h4>Winter Sweater</h4>
+        <p>Rent: ₹980/day</p>
+        <p>Buy: ₹5000</p>
+        <ul><li>Color: Maroon</li><li>Size: L</li></ul>
+        <a href="{% url 'rent_now' %}" class="uk-button uk-button-primary">Rent Now</a>
+      </div></div>
+
+    </div>
+  </div>-->
+#man page
+def category_page(request, category_name):
+    size = request.GET.get('size')
+
+    if size:
+        products = Product.objects.filter(category=category_name, size=size)
+    else:
+        products = Product.objects.filter(category=category_name)
+
+    return render(request, 'category_page.html', {
+        'products': products,
+        'category': category_name
+    })
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="uk-section uk-container">
+
+    <h2 class="uk-text-center uk-margin-large-bottom">Men Collection</h2>
+
+    <!-- Size Filter -->
+    <div class="uk-text-center uk-margin-medium-bottom">
+        <a href="?size=S" class="uk-button uk-button-default">S</a>
+        <a href="?size=M" class="uk-button uk-button-default">M</a>
+        <a href="?size=L" class="uk-button uk-button-default">L</a>
+        <a href="?size=XL" class="uk-button uk-button-default">XL</a>
+        <a href="{% url 'men_page' %}" class="uk-button uk-button-primary">All</a>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="uk-grid-small uk-child-width-1-3@s uk-child-width-2-3@m" uk-grid>
+
+        {% for product in products %}
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-border-rounded">
+
+                <div class="uk-card-media-top">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="height:250px; width:100%; object-fit:cover;">
+                </div>
+
+                <div class="uk-card-body uk-text-center">
+                    <h4>{{ product.name }}</h4>
+
+                    <p><strong>Size:</strong> {{ product.size }}</p>
+
+                    <p style="color:#28a745; font-weight:600;">
+                        Rent: ₹{{ product.rent_price }}
+                    </p>
+
+                    <p style="color:#007bff; font-weight:600;">
+                        Buy: ₹{{ product.buy_price }}
+                    </p>
+
+                   <div class="uk-margin-small-top">
+                     <a href="{% url 'rent_now' product.id %}" class="uk-button uk-button-danger uk-button-small">Rent Now</a>
+                     <a href="{% url 'buy_now' product.id %}" class="uk-button uk-button-primary uk-button-small"> Buy Now </a>
+                   </div>
+              </div>
+             </div>
+        </div>
+        {% empty %}
+        <p class="uk-text-center">No products available for this size.</p>
+        {% endfor %}
+
+    </div>
+
+</section> rent now days logic
+        if start_date and days:
+            days = int(days)
+
+            start_obj = datetime.strptime(start_date, "%Y-%m-%d")
+            end_obj = start_obj + timedelta(days=days)
+
+            end_date = end_obj.date()
+            total_price = days * product.rent_price
+
+    context = {
+        "product": product,
+        "total_price": total_price,
+        "start_date": start_date,
+        "end_date": end_date,
+        "days": days,
+    }
+{% endblock %}
